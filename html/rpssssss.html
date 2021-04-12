@@ -1,0 +1,53 @@
+<body>
+    <img src="rock.PNG" onclick="userSelect('rock')">
+    <img src="papaer.PNG" onclick="userSelect('paper')">
+    <img src="scissors.PNG" onclick="userSelect('scissors')">
+    <div id="output"></div>
+    <script>
+        let selectedByUser = "none";
+        let selectedByComp = "none";
+        let winner = "none";
+        const outputDiv = document.getElementById("output");
+
+
+        function showResults(){
+            if(winner != "none"){
+            outputDiv.innerHTML = `
+            You chose ${selectedByUser} - computer chose ${selectedByComp} <br>
+            ${winner}  won!
+            `;
+
+            }
+        }
+
+        function userSelect(selected){
+            selectedByUser = selected;
+            computerSelect();
+        }
+
+        function computerSelect(){
+            let randomChoice = Math.floor(Math.random()*3)+1;
+            if(randomChoice == 1) selectedByComp = "rock";
+            if(randomChoice == 2) selectedByComp = "paper";
+            if(randomChoice == 3) selectedByComp = "scissors";
+            checkWinning();
+        }
+        
+        function checkWinning(){
+            if(selectedByUser == "rock" && selectedByComp == "scissors"
+                ||selectedByUser == "paper" && selectedByComp == "rock"
+                ||selectedByUser == "scissors" && selectedByComp == "paper"){
+                    winner = "You";
+                }
+            if(selectedByComp == "rock" && selectedByUser == "scissors"
+                ||selectedByComp == "paper" && selectedByUser == "rock"
+                ||selectedByComp == "scissors" && selectedByUser == "paper"){
+                    winner = "Computer";
+                }
+            if(selectedByUser != "none" && selectedByUser == selectedByComp){
+                winner = "No one";
+            }   
+            showResults();
+        }
+    
+    </script>

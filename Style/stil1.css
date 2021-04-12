@@ -1,0 +1,45 @@
+body {
+    background-color: rgb(0, 0, 0);
+
+}
+
+
+.center {
+    text-align: center;
+}
+
+.tilhoy {
+    text-align: right;
+}
+
+.gulgronn {
+    color:yellowgreen
+
+}
+
+table, td, th {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: springgreen;
+    border: 1px dotted #4501ff;
+    text-align: left;
+    padding: 2px;
+}
+
+#denlillebox {
+            
+             margin-left:750px;
+             border:none;
+             height:300px;
+             width:300px;
+             
+             
+             
+             
+}
+  
+
+
+
+  

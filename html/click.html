@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Uten MVC</h3>
+    <button onclick="noMvcClick()">+</button>
+    <div id="myNumber">0</div>
+
+    <hr />
+
+    <h3>Med MVC 1</h3>
+
+    <button onclick="mvcClick()">+</button>
+    <div id="myNumber2"></div>
+
+    <hr />
+
+    <h3>Med MVC 2</h3>
+
+    <div id="app"></div>
+
+    <script>
+        // uten MVC
+        function noMvcClick() {
+            var myDiv = document.getElementById('myNumber');
+            var number = myDiv.innerHTML;
+            number++;
+            myDiv.innerHTML = number;
+            
+        }
+
+
+        // med MVC
+
+
+        // model
+        var number = 0;
+
+        // view
+        updateView();
+        function updateView() {
+            var myDiv = document.getElementById('myNumber2');
+            myDiv.innerHTML = number;
+        }
+
+        // controller
+        function mvcClick() {
+            number++;
+            updateView();
+        }
+
+        // med MVC 2
+        updateView2();
+        function updateView2() {
+            document.getElementById('app').innerHTML = `
+                <button onclick="mvcClick2()">+</button>
+                <div>${number}</div>
+                `;
+        }
+
+        function mvcClick2() {
+            number++;
+            updateView2();
+        }
+
+
+    </script>
+
+</body>
+
+</html>

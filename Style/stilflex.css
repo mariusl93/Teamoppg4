@@ -1,0 +1,37 @@
+body {
+    background-color: black;
+}
+
+h2 {
+    background-color: tomato;
+    text-align: center;
+}
+
+#skjerm {
+    margin:auto;
+    border: 5px dashed hotpink;
+    height: 45px;
+    width:  300px;
+    background-color: steelblue; 
+    font-family: fantasy; 
+    font-size: xx-large;
+    text-align: center;
+    
+}
+
+#numpad {
+    margin:auto;
+    height: 200px;
+    width: 350px;
+    border: 3px solid green;
+    background-color: gray;
+}
+
+button {
+    position:relative;
+    left: 20px;
+    top: 2px;
+    width:100px;
+    height:65px;    
+}
+

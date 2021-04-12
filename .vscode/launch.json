@@ -1,0 +1,21 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "firefox",
+            "request": "launch",
+            "name": "Launch Firefox against localhost",
+            "url": "file:///C:/Visual%20code%20filer/Oblig%201/index.html",
+            "webRoot": "${workspaceFolder}",
+            "pathMappings": [
+                {
+                    "url": "file:///C:/Visual%20code%20filer/Oblig%201",
+                    "path": "${workspaceFolder}/Oblig 1"
+                }
+            ]
+        }
+    ]
+}

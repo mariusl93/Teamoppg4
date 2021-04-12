@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizbiz</title>
+</head>
+<body>
+
+    <h1>Velkommen til quiz</h1>
+    
+    <h2>Hvor gammel er jeg?</h2>
+
+    <ul>
+        <li   onclick=   "bytttext1(this)">10 år?</li>
+        <li   ondblclick="bytttext1(this)">30 år?</li>
+        <li   onclick=   "bytttext2(this)">28 år?</li>
+    </ul>
+
+<script>
+   
+    function bytttext1(jadda) {
+        
+        jadda.innerHTML = 'NEI DET ER FEIL!!!';
+
+    }
+
+    function bytttext2(jadda) {
+        
+        jadda.innerHTML = 'Helt riktig';
+        
+    }
+
+
+</script>
+    
+</body>
+</html>

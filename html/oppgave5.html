@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 - Kode som kjøres når siden lastes vs kode i en funksjon</title>
+</head>
+
+<body onload="dafunksjon()">
+
+ <!--Lag en enkel html-side som legger til tekst i en div både direkte i script-taggen og via en funksjon som blir kalt fra body sin onload-event. 
+     Logg tidspunktet for begge deler vha. denne koden: document.getElementById('a').innerHTML = '' + new Date().toTimeString();
+     Legg inn et stort bilde på websiden og se hvordan dette påvirker tidene. Husk å reloade siden med ctrl-f5 for å tvinge den til å laste inn bildet - og ikke bare hente det fra cache.</!--> 
+    
+
+<div>  
+   <div id="b"></div>
+   <div id="a"></div>
+   <img id="c">
+</div>
+
+
+
+
+
+    <script>
+       document.getElementById("b").innerHTML = 'Direkte:' + new Date().toTimeString();
+        
+
+     
+     function dafunksjon() { 
+         
+         
+         document.getElementById("a").innerHTML = 'På onload dafunksjon' + new Date().toTimeString();
+         
+         }
+         document.getElementById("c").src="https://images.freeimages.com/images/large-previews/68c/delicate-arch-2-1391623.jpg"
+    
+
+        
+        
+    </script>
+    
+</body>
+
+</html>
