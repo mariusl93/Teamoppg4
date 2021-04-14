@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Test Suite</title>
+<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.15.0.css">
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="https://code.jquery.com/qunit/qunit-2.15.0.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/controller.js"></script>
+  
+  
+  
+  <script>
+
+
+
+    function senådu(){};
+  
+      QUnit.test('knapp 1 skal gi 169 pristot', function (assert) {
+        pristot == 0;
+        kjøpt(1);
+        let forventetverdi = 169;
+        let egentligverdi = pristot;
+
+        assert.equal(egentligverdi, forventetverdi);
+      });
+
+
+      QUnit.test('knapp 2 skal gi 133 pristot', function (assert) {
+        pristot = 0;
+        kjøpt(2);
+        let forventetverdi = 133;
+        let egentligverdi = pristot;
+
+        assert.equal(egentligverdi, forventetverdi);
+      });
+      
+      QUnit.test('knapp 3 skal gi 255 pristot', function (assert) {
+        pristot = 0;
+        kjøpt(3);
+        let forventetverdi = 255;
+        let egentligverdi = pristot;
+
+        assert.equal(egentligverdi, forventetverdi);
+      });
+
+      QUnit.test('knapp skal gi feil', function (assert) {
+        pristot = 0;
+        kjøpt(2);
+        let forventetverdi = 133;
+        let egentligverdi = pristot
+
+        assert.false(forventetverdi != egentligverdi);
+      });
+    
+  </script>  
+  
+
+</body>
