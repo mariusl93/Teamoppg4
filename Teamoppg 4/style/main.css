@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: hotpink;
+}
+
+#hovedfelt{
+    width: 300px;
+    padding: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: rgb(224, 172, 207);
+    text-align: center;
+}
+
+#morseKode1 {
+    
+    width: 100%;
+
+}
+
+
+
+#skrivefelt, #morse{
+
+width: 20em;
+height: 8em;
+border: 2px rgb(0, 0, 0) dotted;
+border-radius: 70px;
+font-size: medium;
+
+
+
+}
+
+#resultater {
+border: 2px green solid;
+width: 300px;
+font-size: xx-large;  
+font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;    
+}
