@@ -1,0 +1,29 @@
+img{
+    height:400px;
+    width :350px;
+    
+    
+}
+
+button{
+    float:inline-start;
+    animation-name: example;
+    animation-duration: 4s;
+    animation-fill-mode: both;
+}
+
+@keyframes example {
+    from {background-color: red;}
+    to {background-color: rgb(11, 255, 11);}
+    0% {font-size: large; font-family:fantasy;}
+    50% {font-size: xx-large;}
+    75% {font-size:xx-small;}
+    100% {font-size: x-large;}
+}
+
+i {
+    animation-name:example;
+    animation-duration: 6s;
+    animation-fill-mode: both;
+    
+}
