@@ -9,7 +9,7 @@ function show() {
 containerdiv.innerHTML = `
     <button onclick="byttjævlabilde()">Attack</button>
     <img src="${bildet[index]}">
-    <p><i>dette er en måte</i> å gjøre det på...</p<
+    <p><i>check this</i> shitttt...</p<
     
     `
     
