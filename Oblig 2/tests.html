@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Test Suite</title>
+<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.15.0.css">
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="https://code.jquery.com/qunit/qunit-2.15.0.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/controller.js"></script>
+
+  <script>
+
+      function show(){};
+
+      QUnit.test('leggtil legger til bar', function (assert) {
+        inputValue = 5;
+        leggtil();
+
+        assert.equal(numbers.length, 6);
+        });
+  
+      QUnit.test('denvalgte forander hvilken bar som er valgt', function (assert) {
+        denvalgte(1);
+
+        assert.equal(chosenBar, 1);
+      });
+
+      QUnit.test('deleteBar sletter valgt bar', function (assert) {
+        denvalgte(0)
+        deleteBar()
+
+        assert.equal(numbers.length, 5);
+        });
+
+      QUnit.test('changeBar forandrer valgt bar', function (assert) {
+        inputValue = 2;
+        chosenBar = 2;
+
+        changeBar()
+
+        assert.equal(numbers[1], 2);
+        });
+    
+  </script>  
+  
+</body>

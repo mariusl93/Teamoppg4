@@ -2,24 +2,23 @@
 var contentDiv = document.getElementById('app');
 // model
 let numbers = [7, 3, 1, 5, 8];
-let chosenBar = 0; // Variabel for hvilken stolpe som er valgt
+let chosenBar = "ingen"; // Variabel for hvilken stolpe som er valgt
 let inputValue = null; // Variabel for hva som er skrevet i input-feltet
-let idNum = 1;
-                                    //SKRIVER MAN INN NOE OVER 10 SÅ LEGGER DETTE STOLPE TIL ETTER ALERTEN - DETTE SKAL IKKE SKJE!!! - Skjer bare på ternary ???
-                                    //HVIS MAN IKKE LEGGER INN EN VERDI I INPUT FELTET, ---//Å DERETTER TRYKKER LEGG TIL SÅ VIL MAN LEGGE TIL INGENTING - DETTE SKAL IKKE SKJE!!!
+/* let idNum = 1; */
+var knappstatus = "disabled";
 
 //view
-show();
+
 function show() {
     let svgInnerHtml = '';
-    idNum = 1;
+    /*  idNum = 1; */
     for (let i = 0; i < numbers.length; i++) {
         svgInnerHtml += drawbars(numbers[i], i + 1);
-        idNum++;
+        /* idNum++; */
     }
 
     contentDiv.innerHTML = `
-            <svg id="chart" width="500" viewBox="0 0 80 60" >
+            <svg id="chart" width="500" viewBox="00 0 80 60" >
                 ${svgInnerHtml}
             </svg><br/>
             Valgt stolpe: <i>${chosenBar}</i>
@@ -27,19 +26,21 @@ function show() {
             Verdi:
             <input type="number" min="1" max="10" oninput="inputValue = this.value" />
             <button onclick="leggtil()">Legg til stolpe</button>
-            <button disabled>Endre valgt stolpe</button><br />
-            <button onclick="deleteBar()">Fjerne valgt stolpe</button>
+            <button ${knappstatus} onclick="changeBar()">Endre valgt stolpe</button><br />
+            <button ${knappstatus} onclick="deleteBar()">Fjerne valgt stolpe</button>
             `;
 }
 
 function drawbars(number, barNo) {
+    var svartRamme = chosenBar === barNo ? 'stroke-width:0.5;stroke:rgb(0,0,0)' : '';
     const width = 8;
     const spacing = 2;
     let x = (barNo - 1) * (width + spacing);
     let height = number * 10;
     let y = 60 - height;
     let color = calcColor(1, 10, barNo);
-    return `<rect onclick="denvalgte(${idNum})" id="${idNum}" width="${width}" height="${height}"
+
+    return `<rect style="${svartRamme}" onclick="denvalgte(${barNo})" width="${width}" height="${height}"
                             x="${x}" y="${y}" fill="${color}"></rect>`;
 }
 
@@ -53,32 +54,65 @@ function calcColor(min, max, val) {
 //controller
 
 function leggtil() {
-    inputValue <= 0 || inputValue >= 11 ? alert("nei fy") : inputValue = parseInt(inputValue); numbers.push(inputValue);
-    show();
-    
-    /* if(inputValue <= 0 || inputValue >= 11){
-        alert("Nei! Kutt ut!")}
-    else {inputValue = parseInt (inputValue);
-    numbers.push(inputValue);
-    show();}; */
+    /* inputValue <= 0 || inputValue >= 11 ? alert("nei fy") : inputValue = parseInt(inputValue); numbers.push(inputValue);
+    show(); */
+
+    if (inputValue <= 0 || inputValue >= 11) {
+        alert("Nei! Kutt ut!")
+    }
+    else {
+        inputValue = parseInt(inputValue);
+        numbers.push(inputValue);
+        inputValue = null;
+
+        show();
+    };
+
 }
 
+function denvalgte(barNo) {
 
-function denvalgte(selected) {
-    chosenBar = selected;
+    if (chosenBar === barNo) {
+        chosenBar = "Ingen"
+        knappstatus = "disabled";
+        show();
+
+        return;
+    }
+
+    chosenBar = barNo;
+    knappstatus = "";
+
     show();
 }
 
 function deleteBar() {
-    numbers.splice(chosenBar - 1, 1)
+
+    if (chosenBar != "Ingen") {
+        numbers.splice(chosenBar - 1, 1)
+        show();
+    }
+
+    chosenBar = "Ingen";
+    knappstatus = "disabled";
+
     show();
 }
 
 function changeBar() {
 
+    if (inputValue != null && inputValue < 11 && inputValue > 0) {
+        numbers[chosenBar - 1] = inputValue
+
+        show();
+    }
+    else {
+        alert("NEI DETTÆ FUNKÆR IKKE");
+    }
+
 }
 
-
+/* 
 /* Gjør det mulig å velge en stolpe. Man skal kunne velge en stolpe ved å klikke på den.
 Den skal da få en svart ramme rundt seg, og i tillegg skal teksten oppdateres til for eksempel "Valgt stolpe: 1".
 Hvis man klikker på den stolpen som allerede er valgt, skal deretter ingen stolpe være valgt.
@@ -101,4 +135,4 @@ Lag enhetstester av controller-funksjonene! Altså funksjonene for å:
     velge stolpe (teste både velge den som er valgt og en annen)
     slette en stolpe
     endre en stolpe
-    legge til en stolpe - Ferdig??? */
+    legge til en stolpe -// */
