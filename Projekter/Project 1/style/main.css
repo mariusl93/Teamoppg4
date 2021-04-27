@@ -1,0 +1,52 @@
+p{
+    font-size: x-large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1{
+    text-align: center;
+
+}
+
+#menybox{
+    background-color: darkgrey;
+    max-width: fit-content;
+    max-height: fit-content;
+}
+
+.items{
+    margin-top: 21px;
+    margin-left:300px;
+    width: 150px;
+    height: 150px;
+    display:inline-block;
+    border: 7px solid yellow;
+    border-radius: 80px;
+    max-width: fit-content;
+    
+}
+
+#meny1{
+    background-image: url("../images/Burger.png");
+}
+
+#meny2{
+    background-image: url("../images/Burger2.png");
+}
+
+#meny3{
+    background-image: url("../images/Burger3.png");
+}
+
+.knapper{
+    margin-top: 11rem;
+    margin-left: 3rem;
+
+}
+
+#ordre{
+    border:dotted blue 2px;
+    background-color: hotpink;
+    
+    
+}
