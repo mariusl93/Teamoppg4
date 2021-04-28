@@ -2,7 +2,7 @@
 var contentDiv = document.getElementById('app');
 // model
 let numbers = [7, 3, 1, 5, 8];
-let chosenBar = "ingen"; // Variabel for hvilken stolpe som er valgt
+let chosenBar = "Ingen"; // Variabel for hvilken stolpe som er valgt
 let inputValue = null; // Variabel for hva som er skrevet i input-feltet
 /* let idNum = 1; */
 var knappstatus = "disabled";

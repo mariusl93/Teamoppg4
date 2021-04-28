@@ -13,17 +13,27 @@
 
       function show(){};
 
-      QUnit.test('leggtil legger til bar', function (assert) {
+      QUnit.test('leggtil legger til bar', function (assert) {                              
         inputValue = 5;
         leggtil();
 
-        assert.equal(numbers.length, 6);
+        assert.deepEqual(numbers, [7, 3, 1, 5, 8, 5]); 
         });
   
       QUnit.test('denvalgte forander hvilken bar som er valgt', function (assert) {
         denvalgte(1);
 
         assert.equal(chosenBar, 1);
+        denvalgte();
+        
+      });
+
+       QUnit.test('denvalgte sjekker om stolpen blir deselected', function (assert) {
+        denvalgte(1);
+        denvalgte(1);
+
+        assert.equal(chosenBar, "Ingen");
+        
       });
 
       QUnit.test('deleteBar sletter valgt bar', function (assert) {
@@ -45,3 +55,6 @@
   </script>  
   
 </body>
+
+
+<!-- assert.equal(numbers.length, 6); -->

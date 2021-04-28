@@ -48,6 +48,7 @@ function changeBar() {
 
     if (inputValue != null && inputValue < 11 && inputValue > 0) {
         numbers[chosenBar - 1] = inputValue
+        inputValue = null;
 
         show();
     }
