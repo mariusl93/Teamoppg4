@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        table, tr, td, th {
+            border: 1px solid lightgray;
+            border-collapse: collapse;
+        }
+
+        td, th {
+            padding: 4px;
+        }
+
+        th {
+            background-color: darkblue;
+            border: 1px solid darkblue;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+Oppgaver
+<ol>
+    <li>
+        Legg til person. Må kunne angis når man lager ny oppgave og må
+        kunne redigeres
+    </li>
+    <li>Legg til kolonne for frist. Bruk input-tag med type="date".
+        Konvertering til visningsformat: <tt>new Date("2019-02-13").toLocaleDateString()</tt>
+    </li>
+    <li>Lag kolonne for "gjort dato" som fylles ut automatisk når man 
+        trykker på checkboxen for at det er gjort.</li>
+
+
+</ol>
+<table id="tasksTable"></table>
+<p>
+    <input id="taskDescription" type="text" placeholder="Legg til oppgave"/><br>
+    <input id="taskPerson" type="text" placeholder="Legg til Person"/><br>
+    <input id="taskDate" type="date" />
+    <button onclick="addTask()">Legg til oppgave</button>
+    
+</p>
+<script>
+    // Model
+    var tasks = [
+        { description: 'Handle til middag', isDone: false, Person: '', Dato: '01.01.1994', Completed: '', },
+        { description: 'Lage middag', isDone: false, Person: '', Dato: '', Completed: '', },
+        { description: 'Spise middag', isDone: false, Person: '', Dato: '', Completed: '', },
+    ];
+    var taskDescriptionInput = document.getElementById('taskDescription');
+    var taskPersonInput = document.getElementById('taskPerson');
+    var taskDateInput = document.getElementById('taskDate');
+
+
+    // Controller
+
+    function addTask() {
+        if ((taskDescriptionInput.value !== '') && 
+            (taskPersonInput.value !== '') && 
+            (taskDateInput.value !== '')) {
+            tasks.push({
+            
+            description: taskDescriptionInput.value, 
+            isDone: false,
+            Person: taskPersonInput.value,
+            Dato: new Date(taskDateInput.value).toLocaleString("no-NO", {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+        })
+    });
+        taskDescriptionInput.value = '';
+        taskPersonInput.value = '';
+        taskDateInput.value = '';
+        show();
+            }
+        }
+
+    // View
+    var tasksTable = document.getElementById('tasksTable');
+    show();
+
+    function show() {
+        let html = `
+                        <tr>
+                            <th>Oppgave</th>
+                            <th>Gjort</th>
+                            <th>Person</th>
+                            <th>Dato</th>
+                            <th>Completed</th>
+                            <th></th>
+                            <th></th>
+                            
+                        </tr>`;
+        for (let i = 0; i < tasks.length; i++) {
+            html += createHtmlRow(i);
+        }
+        tasksTable.innerHTML = html;
+    }
+
+    function createHtmlRow(i) {
+        const task = tasks[i];
+        const checkedHtml = task.isDone ? 'checked="checked"' : '';
+        if (!task.editMode)
+            return `<tr>
+                            <td>${task.description}</td>
+                            <td><input onchange="changeIsDone(this, ${i})" type="checkbox" ${checkedHtml} /></td>
+                            <td>${task.Person}</td>
+                            <td>${task.Dato}</td>
+                            <td>${task.Completed}</td>
+                            <td></td>
+                            <td>
+                                <button onclick="deleteTask(${i})">Slett</button>
+                                <button onclick="editTask(${i})">Rediger</button>
+                            </td>
+                        </tr>
+                        `;
+        return `<tr>
+                            <td><input id="editDescription${i}" type="text" value="${task.description}"/></td>
+                            <td><input onchange="changeIsDone(this, ${i})" type="checkbox" ${checkedHtml} /></td>
+                            <td><input id="editPerson${i}" type="text" value="${task.Person}"/></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <button onclick="updateTask(${i})">Lagre</button>
+                            </td>
+                        </tr>
+                        `;
+    }
+
+    function changeIsDone(checkbox, index) {
+        tasks[index].isDone = checkbox.checked;
+        if (tasks[index].isDone == true) {
+            var dateObj = new Date();
+            var month = dateObj.getMonth() + 1; //months from 1-12
+            var day = dateObj.getDate();
+            var year = dateObj.getFullYear();
+
+            newdate = day + "." + month + "." + year;
+            tasks[index].Completed = newdate;
+        } else {tasks[index].Completed = '';}
+        show();
+    }
+
+    function deleteTask(index) {
+        tasks.splice(index, 1);
+        show();
+    }
+
+    function editTask(index) {
+        tasks[index].editMode = true;
+        show();
+    }
+
+    function updateTask(index) {
+        const id = `editDescription${index}`;
+        const inputTag = document.getElementById(id);
+        const id1 = `editPerson${index}`;
+        const inputTag1 = document.getElementById(id1);
+        const id2 = `editDato${index}`;
+        const inputTag2 = document.getElementById(id2);
+        const task = tasks[index];
+        task.description = inputTag.value;
+        task.Person = inputTag1.value;
+        task.Dato = new Date(inputTag2.value).toLocaleString("no-NO", {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+        })
+        task.editMode = false;
+        show();
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+body {
+  background-color: gainsboro;
+}
+
+#Page {
+  height: 210vh;
+  display: grid;
+  grid-template-rows: 0.3fr 5fr 1fr;
+}
+
+#Navbar {
+  background-color: rgb(2, 6, 10);
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  text-align: center;
+  padding-top: 8px;
+  color: white;
+}
+
+#Logo {
+  font-family: arial Black;
+  font-size: larger;
+}
+
+#diveLog {
+  height: 1300px;
+  width: 1000px;
+  margin-left: 250px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: gray;
+  display: grid;
+  grid-template-rows: 1fr 2fr 2fr 2fr 5fr;
+  gap: 5px;
+}
+
+#Menu {
+  font-family: arial Black;
+  font-size: larger;
+}
+
+#Footer {
+  background-color: aliceblue;
+}
+
+/* Input page */
+
+#DiveLogHead {
+  text-align: center;
+  padding-top: 5%;
+}
+
+#DiveLogGrid {
+  background-color: rgb(56, 56, 56);
+  margin: 10px;
+}
+
+#inputHead {
+  color: white;
+  margin: 10px;
+}
+
+#InputArea {
+  margin: 10px;
+  display: grid;
+  grid-template-rows: 0.5fr 4fr;
+}
+
+#InputSpot {
+  width: 300px;
+  margin: 10px;
+}
+
+#stampSpot {
+  width: 200px;
+  height: 100px;
+  margin: 10px;
+}
+
+#inputGrid {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+}
+
+#bottomInnerGrid {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  grid-template-rows: 2fr 2fr 1fr;
+}
+
+#Container {
+  background-color: rgb(56, 56, 56);
+  margin: 10px;
+}
+
+#bottomInputSpot {
+  width: 150px;
+  margin: 10px;
+}
+
+#bottomOtherInputSpot {
+  width: 400px;
+  height: 30px;
+  margin: 10px;
+}
+
+#bottomLongThinInputSpot {
+  width: 400px;
+  margin: 10px;
+}
+
+#saveClear {
+  width: 100px;
+  height: 20px;
+}
+
+#buttonContainer {
+  text-align: center;
+}
